@@ -11,7 +11,9 @@
     "migrate-latest": "knex migrate:latest",
     "migrate-rollback": "knex migrate:rollback",
     "start": "node listen.js",
-    "dev": "nodemon listen.js"
+    "dev": "nodemon listen.js",
+    "test-utils": "mocha spec/utils.spec.js"
+
   },
   "repository": {
     "type": "git",

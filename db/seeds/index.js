@@ -1,19 +1,19 @@
-const { userData, commentData } = require("../data/index");
+const { userData, commentData, filmData } = require("../data/index");
 const { formatDates } = require("../utils/utils");
 exports.seed = function(knex) {
   return knex.migrate
     .rollback()
     .then(() => knex.migrate.latest())
     .then(() => {
-      const formattedCommentsData = formatDates(commentData);
-      return knex
-        .insert(formattedCommentsData)
-        .into("comments")
+      const userPromise = knex("users")
+        .insert(userData)
         .returning("*");
+      const commentPromise = knex("comments")
+        .insert(formatDates(commentData))
+        .returning("*");
+      const filmPromise = knex("films")
+        .insert(filmData)
+        .returning("*");
+      return Promise.all([userPromise, commentPromise, filmPromise]);
     });
 };
-
-//     .then(houseRows => {
-//       // <-- do the rest of the seed logic here ...
-//     });
-// };
