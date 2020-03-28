@@ -5,6 +5,11 @@ exports.seed = function(knex) {
     .rollback()
     .then(() => knex.migrate.latest())
     .then(() => {
+      return knex("comments")
+        .insert(commentData)
+        .returning("*");
+    })
+    .then(() => {
       const formattedCommentsData = formatDates(commentData);
       return knex
         .insert(formattedCommentsData)

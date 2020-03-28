@@ -5,8 +5,6 @@ describe("formatDates", () => {
   it("returns an empty array when passed an empty array", () => {
     expect(formatDates([])).to.eql([]);
   });
-
-  // THE BELOW DOESN'T MAKE SENSE ----- PROPER TDD
   it("returns an empty array when passed an empty array", () => {
     const input = [
       {

@@ -9,7 +9,7 @@ exports.up = function(knex) {
 
     // .references("films.film_id");
     table.integer("votes").defaultTo(0);
-    table.timestamp("created_at").defaultTo(knex.fn.now());
+    table.timestamp("created_at");
     table.text("body").notNullable();
   });
 };
