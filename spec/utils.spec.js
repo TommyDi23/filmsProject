@@ -6,8 +6,8 @@ describe("formatDates", () => {
     expect(formatDates([])).to.eql([]);
   });
 
-  // THE BELOW DOESN'T MAKE SENSE ----- PROPER TDD
-  it("returns an empty array when passed an empty array", () => {
+  
+  it("returns an array with created_at time adjusted", () => {
     const input = [
       {
         body: "Invisible man was terrible avoid at all cost, thank me later",
